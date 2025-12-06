@@ -94,18 +94,31 @@ public class BookService {
      * @return searchBookList
      */
     public List<BookDTO> searchBook(String keyword) {
-        List<BookDTO> searchBookList = new ArrayList<>();
 
-        for(BookDTO book : bookList){
-            // 제목에 keyword가 포함되어 있으면 true
-            if(book.getTitle().contains(keyword)){
-                searchBookList.add(book); // 검색된 책 목록에 keyword 포함 책 추가
-            }
+      // 만약 keyword가 null이면 null 값을 keyword 반환해줌
+      if(keyword == null) return null;
+
+
+      String key = keyword.trim().toLowerCase();
+
+      if(key.isEmpty()) return null;
+
+      List<BookDTO> searchBookList = new ArrayList<>();
+
+
+      for(BookDTO book : bookList) {
+
+
+        String title = (book.getTitle() == null) ? "" : book.getTitle().toLowerCase();
+
+
+        if(title.contains(key)) {
+          searchBookList.add(book);
         }
+      }
 
-        return searchBookList;
+      return searchBookList;
     }
-
     /**
      * List 복사본을 만들어서 정렬 후 반환
      * @param sortingNumber
