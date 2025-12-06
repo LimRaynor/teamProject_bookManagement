@@ -18,7 +18,7 @@ public class UserApplication {
             System.out.println("2. 로그인");
             System.out.println("3. 전체회원조회");
             System.out.println("9. 종료");
-            System.out.print("메뉴를 골라주세요: ");
+            System.out.print("필요한 메뉴를 골라주세요: ");
 
             int choice = sc.nextInt();
             sc.nextLine();
